@@ -41,6 +41,7 @@ class GameViewModel : ViewModel() {
     // COMPLETED (02) Create a timer field of type CountDownTimer
     private val timer : CountDownTimer
 
+
     // COMPLETED (03) Create a properly encapsulated LiveData for the current time called currentTime
     // Its type should be Long
     private val _currentTime = MutableLiveData<Long>()
@@ -73,13 +74,13 @@ class GameViewModel : ViewModel() {
         nextWord()
         _score.value = 0
 
-        // TODO (04) Copy over the CountDownTimer code and then update currentTime and
+        // COMPLETED (04) Copy over the CountDownTimer code and then update currentTime and
         // eventGameFinish appropriately as the timer ticks and finishes
         timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
 
             override fun onTick(millisUntilFinished: Long) {
                 // COMPLETED implement what should happen each tick of the timer
-                _currentTime.value?.plus(ONE_SECOND)
+                _currentTime.value = (millisUntilFinished / ONE_SECOND)
             }
 
             override fun onFinish() {
