@@ -26,8 +26,17 @@ import androidx.lifecycle.ViewModel
  */
 class GameViewModel : ViewModel() {
 
-    // TODO (01) Copy over the provided companion object with the timer constants
-
+    // COMPLETED (01) Copy over the provided companion object with the timer constants
+    companion object {
+        // These represent different important times
+        // This is when the game is over
+        const val DONE = 0L
+        // This is the number of milliseconds in a second
+        const val ONE_SECOND = 1000L
+        // This is the total time of the game
+//        const val COUNTDOWN_TIME = 60000L
+        const val COUNTDOWN_TIME = 10000L
+    }
     // TODO (02) Create a timer field of type CountDownTimer
 
     // TODO (03) Create a properly encapsulated LiveData for the current time called currentTime
