@@ -85,6 +85,7 @@ class GameViewModel : ViewModel() {
 
             override fun onFinish() {
                 // COMPLETED implement what should happen when the timer finishes
+                _currentTime.value = DONE
                 _eventGameFinish.value = true
             }
         }
