@@ -129,12 +129,11 @@ class GameViewModel : ViewModel() {
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
-            // TODO (05) Update this logic so that the game doesn't finish;
+            // COMPLETED (05) Update this logic so that the game doesn't finish;
             // Instead the list is reset and re-shuffled when you run out of words
-            _eventGameFinish.value = true
-        } else {
-            _word.value = wordList.removeAt(0)
+            resetList()
         }
+        _word.value = wordList.removeAt(0)
     }
 
     /** Methods for buttons presses **/
