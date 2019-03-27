@@ -41,8 +41,11 @@ class GameViewModel : ViewModel() {
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>
 
-    // TODO (01) Make a properly encapsulated LiveData called eventGameFinish that holds a
+    // COMPLETED (01) Make a properly encapsulated LiveData called eventGameFinish that holds a
     // boolean
+    private val _eventGameFinish = MutableLiveData<Boolean>()
+    val eventGameFinish: LiveData<Boolean>
+        get() = _eventGameFinish
 
     init {
         resetList()
@@ -105,6 +108,6 @@ class GameViewModel : ViewModel() {
         nextWord()
     }
 
-    // TODO (02) Make the function onGameFinishComplete which makes the value of eventGameFinish
+    // COMPLETED (02) Make the function onGameFinishComplete which makes the value of eventGameFinish
     // false
 }
