@@ -48,6 +48,7 @@ class GameViewModel : ViewModel() {
         get() = _eventGameFinish
 
     init {
+        _eventGameFinish.value = false
         resetList()
         nextWord()
         _score.value = 0
