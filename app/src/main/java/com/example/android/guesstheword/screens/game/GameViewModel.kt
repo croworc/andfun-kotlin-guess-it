@@ -16,6 +16,7 @@
 
 package com.example.android.guesstheword.screens.game
 
+import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,10 +38,15 @@ class GameViewModel : ViewModel() {
 //        const val COUNTDOWN_TIME = 60000L
         const val COUNTDOWN_TIME = 10000L
     }
-    // TODO (02) Create a timer field of type CountDownTimer
+    // COMPLETED (02) Create a timer field of type CountDownTimer
+    private val timer : CountDownTimer
 
-    // TODO (03) Create a properly encapsulated LiveData for the current time called currentTime
+    // COMPLETED (03) Create a properly encapsulated LiveData for the current time called currentTime
     // Its type should be Long
+    private val _currentTime = MutableLiveData<Long>()
+    val currentTime: LiveData<Long>
+        get() = _currentTime
+
 
     // The current word
     private val _word = MutableLiveData<String>()
