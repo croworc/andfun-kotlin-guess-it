@@ -112,4 +112,7 @@ class GameViewModel : ViewModel() {
 
     // COMPLETED (02) Make the function onGameFinishComplete which makes the value of eventGameFinish
     // false
+    fun onGameFinishComplete() {
+        _eventGameFinish.value = false  // meaning: the game finish event (navigation) has been handled
+    }
 }
