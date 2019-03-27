@@ -154,6 +154,9 @@ class GameViewModel : ViewModel() {
         _eventGameFinish.value = false
     }
 
-    // TODO (06) Cancel the timer in onCleared
-
+    // COMPLETED (06) Cancel the timer in onCleared
+    override fun onCleared() {
+        super.onCleared()
+        timer.cancel()
+    }
 }
