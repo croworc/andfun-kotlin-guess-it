@@ -75,6 +75,20 @@ class GameViewModel : ViewModel() {
 
         // TODO (04) Copy over the CountDownTimer code and then update currentTime and
         // eventGameFinish appropriately as the timer ticks and finishes
+        timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                // COMPLETED implement what should happen each tick of the timer
+                _currentTime.value?.plus(ONE_SECOND)
+            }
+
+            override fun onFinish() {
+                // COMPLETED implement what should happen when the timer finishes
+                _eventGameFinish.value = true
+            }
+        }
+
+        timer.start()
     }
 
     /**
