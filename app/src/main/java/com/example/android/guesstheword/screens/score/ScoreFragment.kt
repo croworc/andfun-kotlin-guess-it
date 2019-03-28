@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.guesstheword.R
@@ -51,6 +52,12 @@ class ScoreFragment : Fragment() {
         val score = scoreFragmentArgs.score
         binding.scoreText.text = score.toString()
         binding.playAgainButton.setOnClickListener { onPlayAgain() }
+
+        // COMPLETED (04) Create and construct a ScoreViewModelFactory
+        val viewModelFactory = ScoreViewModelFactory(score)
+        // COMPLETED (05) Create ScoreViewModel by using ViewModelProviders.of as usual, except also
+        // pass in your ScoreViewModelFactory
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
 
         // TODO (07) Convert this class to properly observe and use ScoreViewModel
 
