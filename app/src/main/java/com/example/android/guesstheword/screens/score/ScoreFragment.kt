@@ -46,13 +46,10 @@ class ScoreFragment : Fragment() {
                 false
         )
 
-        // TODO (04) Create and construct a ScoreViewModelFactory
-        // TODO (05) Create ScoreViewModel by using ViewModelProviders.of as usual, except also
-        // pass in your ScoreViewModelFactory
-
         // Get args using by navArgs property delegate
         val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
-        binding.scoreText.text = scoreFragmentArgs.score.toString()
+        val score = scoreFragmentArgs.score
+        binding.scoreText.text = score.toString()
         binding.playAgainButton.setOnClickListener { onPlayAgain() }
 
         // TODO (07) Convert this class to properly observe and use ScoreViewModel
