@@ -39,6 +39,8 @@ class ScoreViewModel(finalScore: Int) : ViewModel() {
 
     init {
         Log.d(LOG_TAG, "Final score is: $finalScore")
+        _score.value = finalScore
+        _eventPlayAgain.value = false
     }
 
     // TODO (06) Add a LiveData for the score and the play again event, using the best practices for
