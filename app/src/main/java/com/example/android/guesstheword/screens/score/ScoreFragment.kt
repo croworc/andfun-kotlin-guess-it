@@ -61,10 +61,10 @@ class ScoreFragment : Fragment() {
         binding.playAgainButton.setOnClickListener { viewModel.onPlayAgain() }
 
         // COMPLETED (04) Create and construct a ScoreViewModelFactory
-        val viewModelFactory = ScoreViewModelFactory(score)
+        viewModelFactory = ScoreViewModelFactory(score)
         // COMPLETED (05) Create ScoreViewModel by using ViewModelProviders.of as usual, except also
         // pass in your ScoreViewModelFactory
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
 
         // TODO (07) Convert this class to properly observe and use ScoreViewModel
 
