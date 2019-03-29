@@ -45,7 +45,7 @@ class ScoreFragment : Fragment() {
     ): View? {
 
         // Inflate view and obtain an instance of the binding class.
-        val binding: ScoreFragmentBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
                 inflater,
                 R.layout.score_fragment,
                 container,
@@ -55,8 +55,10 @@ class ScoreFragment : Fragment() {
         // Get args using by navArgs property delegate
         val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
         val score = scoreFragmentArgs.score
-        binding.scoreText.text = score.toString()
-        binding.playAgainButton.setOnClickListener { onPlayAgain() }
+
+        // The OnClickListener for the playAgainButton will call the ViewModel's onPlayAgain()
+        // method. This will just set the _eventPlayAgain LiveData to true.
+        binding.playAgainButton.setOnClickListener { viewModel.onPlayAgain() }
 
         // COMPLETED (04) Create and construct a ScoreViewModelFactory
         val viewModelFactory = ScoreViewModelFactory(score)
