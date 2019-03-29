@@ -66,7 +66,17 @@ class ScoreFragment : Fragment() {
         // pass in your ScoreViewModelFactory
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
 
-        // TODO (07) Convert this class to properly observe and use ScoreViewModel
+        // COMPLETED (07) Convert this class to properly observe and use ScoreViewModel
+        viewModel.score.observe(this, Observer { finalScore ->
+            binding.scoreText.text = finalScore.toString()
+        })
+
+        viewModel.eventPlayAgain.observe(this, Observer { playAgain ->
+            if (playAgain) {
+                findNavController().navigate(ScoreFragmentDirections.actionRestart())
+                viewModel.onPlayAgainComplete()
+            }
+        })
 
         return binding.root
     }
