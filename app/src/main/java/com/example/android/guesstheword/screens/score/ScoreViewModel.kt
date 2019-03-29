@@ -43,7 +43,8 @@ class ScoreViewModel(finalScore: Int) : ViewModel() {
         _eventPlayAgain.value = false
     }
 
-    // TODO (06) Add a LiveData for the score and the play again event, using the best practices for
-    // encapsulation and event handling that you've learned
+    fun onPlayAgain() {
+        _eventPlayAgain.value = true
+    }
 
 }
