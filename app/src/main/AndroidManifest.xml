@@ -18,7 +18,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.android.guesstheword">
 
-    <!-- TODO (01) Add the Vibrate permission -->
+    <!-- COMPLETED (01) Add the Vibrate permission -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
