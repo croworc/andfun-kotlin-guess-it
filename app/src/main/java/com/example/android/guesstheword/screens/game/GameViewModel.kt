@@ -34,9 +34,15 @@ private val NO_BUZZ_PATTERN = longArrayOf(0)
  */
 class GameViewModel : ViewModel() {
 
-    // TODO (04) Make an enum called BuzzType - have a different buzz type for CORRECT, GAME_OVER
+    // COMPLETED (04) Make an enum called BuzzType - have a different buzz type for CORRECT, GAME_OVER
     // COUNTDOWN_PANIC and NO_BUZZ. Also add a number of seconds to the companion object for when
     // count-down buzzing will start
+    enum class BuzzType(val pattern: LongArray) {
+        CORRECT(CORRECT_BUZZ_PATTERN),
+        GAME_OVER(GAME_OVER_BUZZ_PATTERN),
+        COUNTDOWN_PANIC(PANIC_BUZZ_PATTERN),
+        NO_BUZZ(NO_BUZZ_PATTERN)
+    }
 
     companion object {
         // These represent different important times in the game, such as game length.
@@ -83,8 +89,11 @@ class GameViewModel : ViewModel() {
     val eventGameFinish: LiveData<Boolean>
         get() = _eventGameFinish
 
-    // TODO (05) Create a properly encapsulated LiveData for a buzz event - its' type should be
+    // COMPLETED (05) Create a properly encapsulated LiveData for a buzz event - its' type should be
     // BuzzType
+    private val _eventBuzz = MutableLiveData<BuzzType>()
+    val eventBuzz: LiveData<BuzzType>
+        get() = _eventBuzz
 
     init {
         resetList()
