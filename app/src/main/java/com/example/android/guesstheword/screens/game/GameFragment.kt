@@ -59,16 +59,9 @@ class GameFragment : Fragment() {
         // data binding lifecycle aware
         binding.lifecycleOwner = this
 
-        // TODO (03) Now you can remove the score and word observers - we'll fix
+        // COMPLETED (03) Now you can remove the score and word observers - we'll fix
         // the currentTime observation in the next step
         /** Setting up LiveData observation relationship **/
-        viewModel.word.observe(this, Observer { newWord ->
-            binding.wordText.text = newWord
-        })
-
-        viewModel.score.observe(this, Observer { newScore ->
-            binding.scoreText.text = newScore.toString()
-        })
 
         viewModel.currentTime.observe(this, Observer { newTime ->
             binding.timerText.text = DateUtils.formatElapsedTime(newTime)
