@@ -18,7 +18,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO (04) Add a ScoreViewModel variable to the layout -->
+    <!-- COMPLETED (04) Add a ScoreViewModel variable to the layout -->
+    <data>
+        <variable
+            name="scoreViewModel"
+            type="com.example.android.guesstheword.screens.score.ScoreViewModel"/>
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/score_layout"
