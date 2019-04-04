@@ -185,8 +185,11 @@ class GameViewModel : ViewModel() {
         _eventGameFinish.value = false
     }
 
-    // TODO (07) Add a function onBuzzComplete for telling the view model when the buzz event has
+    // COMPLETED (07) Add a function onBuzzComplete for telling the view model when the buzz event has
     // completed
+    fun onBuzzComplete() {
+        _eventBuzz.value = BuzzType.NO_BUZZ
+    }
 
     override fun onCleared() {
         super.onCleared()
