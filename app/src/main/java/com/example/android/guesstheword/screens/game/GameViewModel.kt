@@ -68,7 +68,7 @@ class GameViewModel : ViewModel() {
         get() = _currentTime
 
     // The String version of the current time
-    val currentTimeString = Transformations.map(currentTime) { time ->
+    val currentTimeString: LiveData<String>? = Transformations.map(currentTime) { time ->
         DateUtils.formatElapsedTime(time)
     }
 
