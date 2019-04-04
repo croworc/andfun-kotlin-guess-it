@@ -57,7 +57,7 @@ class GameViewModel : ViewModel() {
         private const val COUNTDOWN_TIME = 20000L
 
         // The "panic" time: the time the countdown buzzer starts buzzing
-        private const val COUNTDOWN_PANIC_TIME = 55000L
+        private const val COUNTDOWN_PANIC_SECONDS = 5L
 
     }
 
