@@ -16,10 +16,14 @@
 
 package com.example.android.guesstheword.screens.game
 
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -27,6 +31,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.android.guesstheword.R
 import com.example.android.guesstheword.databinding.GameFragmentBinding
+import com.example.android.guesstheword.screens.game.GameViewModel.BuzzType
 
 /**
  * Fragment where the game is played
@@ -69,13 +74,26 @@ class GameFragment : Fragment() {
             }
         })
 
-        // TODO (09) Created an observer for the buzz event which calls the buzz method with the
+        // COMPLETED (09) Create an observer for the buzz event which calls the buzz method with the
         // correct pattern. Remember to call onBuzzComplete!
 
         return binding.root
 
     }
 
-    // TODO (08) Copy over the buzz method here
+    // COMPLETED (08) Copy over the buzz method here
+    private fun buzz(pattern: LongArray) {
+        val buzzer = activity?.getSystemService<Vibrator>()
+
+        buzzer?.let {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                it.vibrate(VibrationEffect.createWaveform(pattern, -1))
+            } else {
+                //deprecated in API 26
+                it.vibrate(pattern, -1)
+            }
+        }
+    }
+
 
 }
