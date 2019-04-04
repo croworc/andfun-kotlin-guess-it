@@ -76,6 +76,23 @@ class GameFragment : Fragment() {
 
         // COMPLETED (09) Create an observer for the buzz event which calls the buzz method with the
         // correct pattern. Remember to call onBuzzComplete!
+        viewModel.eventBuzz.observe(this, Observer {buzzType ->
+            when (buzzType) {
+                BuzzType.CORRECT -> {
+                    buzz(BuzzType.CORRECT.pattern)
+                    viewModel.onBuzzComplete()
+                }
+                BuzzType.COUNTDOWN_PANIC -> {
+                    buzz(BuzzType.COUNTDOWN_PANIC.pattern)
+                    viewModel.onBuzzComplete()
+                }
+                BuzzType.GAME_OVER -> {
+                    buzz(BuzzType.GAME_OVER.pattern)
+                    viewModel.onBuzzComplete()
+                }
+                else -> {}
+            }
+        })
 
         return binding.root
 
