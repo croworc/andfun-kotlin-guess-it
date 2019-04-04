@@ -112,7 +112,13 @@ class GameViewModel : ViewModel() {
         timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
 
             override fun onTick(millisUntilFinished: Long) {
-                _currentTime.value = (millisUntilFinished / ONE_SECOND)
+                val secondsRemaining = millisUntilFinished / ONE_SECOND
+                _currentTime.value = secondsRemaining
+                // If the remaining time in seconds is less than or equal to the "panic time"
+                // we set the buzz event value to PANIC_BUZZ_PATTERN
+                if (secondsRemaining <= COUNTDOWN_PANIC_SECONDS) {
+                    _eventBuzz.value = BuzzType.COUNTDOWN_PANIC
+                }
             }
 
             override fun onFinish() {
