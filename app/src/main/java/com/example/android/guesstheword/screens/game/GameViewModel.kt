@@ -104,7 +104,7 @@ class GameViewModel : ViewModel() {
         _score.value = 0
         _eventBuzz.value = BuzzType.NO_BUZZ
 
-        // TODO (06) Set the value of buzz event to the correct BuzzType when the buzzer should
+        // COMPLETED (06) Set the value of buzz event to the correct BuzzType when the buzzer should
         // fire. This should happen when the game is over, when the user gets a correct answer,
         // and on each tick when countdown buzzing starts
 
