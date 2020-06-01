@@ -60,11 +60,11 @@ class GameFragment : Fragment() {
 
         // COMPLETED (04) Setup the LiveData observation relationship by getting the LiveData from your
         // ViewModel and calling observe. Make sure to pass in *this* and then an Observer lambda
-        viewModel.score.observe(this, Observer { newScore ->
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
         })
 
-        viewModel.word.observe(this, Observer { newWord ->
+        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
             binding.wordText.text = newWord
         })
 
