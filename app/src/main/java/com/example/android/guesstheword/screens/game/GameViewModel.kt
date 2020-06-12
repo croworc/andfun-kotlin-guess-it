@@ -98,12 +98,12 @@ class GameViewModel : ViewModel() {
     /** Methods for buttons presses **/
 
     fun onSkip() {
-        _score.value = (score.value)?.dec()
+        _score.value = (_score.value)?.dec()
         nextWord()
     }
 
     fun onCorrect() {
-        _score.value = (score.value)?.inc()
+        _score.value = (_score.value)?.inc()
         nextWord()
     }
 }
