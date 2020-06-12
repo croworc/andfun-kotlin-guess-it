@@ -23,7 +23,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.guesstheword.R
@@ -62,16 +62,16 @@ class ScoreFragment : Fragment() {
 
         // COMPLETED (04) Create and construct a ScoreViewModelFactory
         viewModelFactory = ScoreViewModelFactory(score)
-        // COMPLETED (05) Create ScoreViewModel by using ViewModelProviders.of as usual, except also
-        // pass in your ScoreViewModelFactory
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
+        // COMPLETED (05) Create ScoreViewModel by using ViewModelProvider constructor as usual,
+        // except also pass in your ScoreViewModelFactory
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ScoreViewModel::class.java)
 
         // COMPLETED (07) Convert this class to properly observe and use ScoreViewModel
-        viewModel.score.observe(this, Observer { finalScore ->
+        viewModel.score.observe(viewLifecycleOwner, Observer { finalScore ->
             binding.scoreText.text = finalScore.toString()
         })
 
-        viewModel.eventPlayAgain.observe(this, Observer { playAgain ->
+        viewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
             if (playAgain) {
                 findNavController().navigate(ScoreFragmentDirections.actionRestart())
                 viewModel.onPlayAgainComplete()
