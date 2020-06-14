@@ -62,11 +62,9 @@ class GameViewModel : ViewModel() {
     private val timer: CountDownTimer
 
     private val _currentTime = MutableLiveData<Long>()
-    val currentTime: LiveData<Long>
-        get() = _currentTime
 
     // The String version of the current time
-    val currentTimeString = Transformations.map(currentTime) { time ->
+    val currentTimeString = Transformations.map(_currentTime) { time ->
         DateUtils.formatElapsedTime(time)
     }
 
